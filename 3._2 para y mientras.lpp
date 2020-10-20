@@ -45,7 +45,7 @@ caracter sw
 	
 	
 	//lectura para el fin del programa//
-	escriba "´pulse enter para continuar ...."
+	escriba "Â´pulse enter para continuar ...."
 	lea sw	
 	
 fin*/
@@ -76,7 +76,7 @@ fin*/
 		escriba nombres[i]
 		llamar nueva_linea()
 	fin para
-			escriba "´pulse enter para continuar ...."
+			escriba "Â´pulse enter para continuar ...."
 	        lea sw	
 fin*/
 
@@ -112,17 +112,7 @@ inicio
 		i <- i +1
 	hasta(i > 21)
 	
-	escriba "´pulse enter para continuar ...."
+	escriba "Â´pulse enter para continuar ...."
 	lea sw
 	
-fin
-	
-    	
-	
- 	
- 		
- 		
- 		
-
-
-	
+fin	
