@@ -1,0 +1,28 @@
+///////////////////////////////////////
+//Archivo: ejemplo para
+//Autor: Elizabeth Elena Alarcón Pantoja//
+//Fecha:05/05/2015
+//Descripción: ejemplo para
+/////////////////////////////////////////////////////////////////////////////////////////
+
+//Bloque de declaración
+
+entero i,n,producto
+
+//bloque de procedimientos y funciones
+
+//programa principal (funciona hasta 33!)
+
+Inicio
+
+	producto<-1
+
+		escriba "Digite el número a calcular el factorial:"
+		lea n
+		
+			Para i<-1 hasta n haga
+				producto<- producto*i
+			fin para
+		
+		escriba n,"!= ",producto
+fin

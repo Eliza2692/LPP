@@ -1,0 +1,35 @@
+///////////////////////////////////////
+//Archivo: ejemplo para
+//Autor: Elizabeth Elena Alarcón Pantoja//
+//Fecha:05/05/2015
+//Descripción: ejemplo para
+/////////////////////////////////////////////////////////////////////////////////////////
+
+//Bloque de declaración
+
+entero i, n, a, b, nuevo
+//bloque de procedimientos y funciones
+
+//programa principal (funciona hasta 33!)
+
+Inicio
+
+	escriba "Digite un número: "
+	lea n
+
+	a<-1
+	b<-0
+	escriba "0"
+	llamar nueva_linea
+	Para i<-1 hasta n-1 haga
+		nuevo <- a + b
+		b <- a
+		a <- nuevo
+		
+		escriba b
+		llamar nueva_linea
+		escriba a
+		
+	fin para
+
+fin

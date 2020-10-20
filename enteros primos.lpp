@@ -1,0 +1,23 @@
+
+
+
+
+
+
+entero n,i
+
+
+inicio
+	
+	escriba "Digite un número entero: "
+	lea n
+	
+	para i <- 2 hasta n-1 haga
+		si n mod i = 0 entonces
+			escriba "el número ", n , " no es primo"
+		sino
+			escriba "el número ", n , " es primo"
+		fin si
+	fin para
+
+fin

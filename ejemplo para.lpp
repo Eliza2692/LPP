@@ -1,0 +1,32 @@
+///////////////////////////////////////
+//Archivo: ejemplo para
+//Autor: Elizabeth Elena Alarcón Pantoja//
+//Fecha:05/05/2015
+//Descripción: ejemplo para
+/////////////////////////////////////////////////////////////////////////////////////////
+
+//Bloque de declaración
+
+entero i,n,suma
+
+//bloque de procedimientos y funciones
+
+//programa principal
+
+Inicio
+
+suma<-0
+
+//limpiar y colorear pantalla//
+llamar color_texto(4)
+llamar limpiar_pantalla
+llamar color_fondo(15)
+llamar limpiar_pantalla
+
+Para i<-1 hasta 10 haga
+llamar nueva_linea
+	escriba "Digite un número:"
+	lea n
+	suma<- suma+n
+fin para
+fin

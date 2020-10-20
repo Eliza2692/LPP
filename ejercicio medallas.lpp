@@ -1,0 +1,71 @@
+arreglo [80] de cadena [50] paises
+arreglo [80] de entero oro
+arreglo [80] de entero plata
+arreglo [80] de entero bronce
+arreglo [80] de entero total
+
+entero i,j, aux,totale
+caracter sw
+cadena [50]auxpais
+
+inicio
+i<- 1
+sw <- 's'
+
+mientras (i<=80)y(sw='s')haga
+		  escriba "digite el nombre del pais"
+		  lea paises [i]
+		  escriba "digite cantidad de medallas de oro:"
+		  lea oro [i]
+		  escriba "digite cantidad de medallas de plata:"
+		  lea plata [i]
+		  escriba "digite cantidad de medallas de bronce:"
+		  lea bronce [i]
+		  
+		  total [i]<- (oro[i]+plata[i]+bronce[i])
+		  
+		  escriba "desea continuar s/N?"
+		  lea sw
+		  llamar limpiar_pantalla()
+		  
+		  i<- i + 1	  
+fin mientras
+          totale <-i-1
+          para i<-1 hasta totale haga
+          		para j <- 1 hasta totale-1 haga
+          			si oro[j]>oro [j+1] entonces
+          				aux<- oro[j]
+          				oro [j]<- oro[j+1]
+          				oro [j+1]<-aux
+          				
+          				aux<- plata[j]
+          				plata [j]<- plata[j+1]
+          				plata[j+1]<-aux
+          				
+          				aux<- bronce[j]
+          				bronce [j]<- bronce[j+1]
+          				bronce [j+1]<-aux
+          				
+          				aux<- total[j]
+          				total [j]<- total[j+1]
+          				total [j+1]<-aux
+          				
+          				auxpais<- paises[j]
+          				paises [j]<- paises[j+1]
+          				paises[j+1]<-auxpais
+          				
+          			 fin si
+          		 fin para 
+          		 
+         fin para
+fin 
+          	
+	 
+         	
+          				
+          				
+          				
+          				
+          				
+          				
+		  
