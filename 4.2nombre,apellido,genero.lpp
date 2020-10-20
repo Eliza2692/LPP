@@ -1,0 +1,135 @@
+// declaracion de arreglo
+
+arreglo [1000] de cadena [50] Nombres
+arreglo [1000] de cadena [50] Apellidos
+arreglo [1000] de cadena [50] Genero
+
+//Declaraciòn de Variables
+
+entero i,j,k
+caracter sw, enter
+cadena [50]aux
+
+//inicio del programa
+
+inicio
+
+	sw<-'s'
+	i<-1
+	mientras ((sw='s') o (sw='S')) y (i<1001) haga
+		Escriba "Nombre: "
+		lea Nombres[i]
+		Escriba "Apellido: "
+		lea Apellidos[i]
+		Escriba "Genero M/F: "
+		Lea Genero[i]
+		Escriba "Desea continuar? S/N "
+		lea sw
+		llamar limpiar_pantalla()
+		i<-i+1
+	fin mientras
+	k<-i-1
+	
+//Ordenar por nombres 
+	
+	i<-2
+	mientras (i<=k) haga
+		j<-1
+		mientras (j<=(k-1)) haga
+			si (Nombres[j]>Nombres[j+1]) entonces
+		 		aux<-Nombres[j]
+		 		Nombres[j]<-Nombres[j+1]
+		 		Nombres[j+1]<-aux
+		 	fin si
+		 	j<-j+1	
+		 fin mientras
+		 i<-i+1
+	fin mientras
+	
+//mostrar por orden nombre
+	
+	escriba "Orden por nombre"
+	llamar nueva_linea()
+	llamar nueva_linea()
+	i<-1 
+	mientras (i<=k) haga
+		escriba Nombres[i]," ",Apellidos[i],"--------",Genero[i]
+		llamar nueva_linea()
+		i<-i+1
+	fin mientras
+	escriba "_____________________________________________________"
+
+	Escriba "Enter"
+	lea enter
+	
+	llamar limpiar_pantalla()
+	
+//Ordenar por apellidos
+	
+	i<-2
+	mientras (i<=k) haga
+		j<-1
+		mientras (j<=(k-1)) haga
+			si (Apellidos[j]>Apellidos[j+1]) entonces
+		 		aux<-Apellidos[j]
+		 		Apellidos[j]<-Apellidos[j+1]
+		 		Apellidos[j+1]<-aux
+		 	fin si
+		 	j<-j+1	
+		 fin mientras
+		 i<-i+1
+	fin mientras
+	
+//mostrar por orden apellidos
+	
+	escriba "Orden por apellidos"
+	llamar nueva_linea()
+	llamar nueva_linea()
+	i<-1 
+	mientras (i<=k) haga
+		escriba Apellidos[i]," ",Nombres[i],"--------",Genero[i]
+		llamar nueva_linea()
+		i<-i+1
+	fin mientras
+	escriba "_____________________________________________________"
+
+	Escriba "Enter"
+	lea enter
+	
+	llamar limpiar_pantalla()
+	
+	//Ordenar por Genero
+	
+	i<-2
+	mientras (i<=k) haga
+		j<-1
+		mientras (j<=(k-1)) haga
+			si (Genero[j]>Genero[j+1]) entonces
+		 		aux<-Genero[j]
+		 		Genero[j]<-Genero[j+1]
+		 		Genero[j+1]<-aux
+		 	fin si
+		 	j<-j+1	
+		 fin mientras
+		 i<-i+1
+	fin mientras
+	
+//mostrar por orden Genero
+	
+	escriba "Orden por Genero"
+	llamar nueva_linea()
+	llamar nueva_linea()
+	i<-1 
+	mientras (i<=k) haga
+		escriba Apellidos[i]," ",Nombres[i],"--------",Genero[i]
+		llamar nueva_linea()
+		i<-i+1
+	fin mientras
+	escriba "_____________________________________________________"
+
+	Escriba "Enter"
+	lea enter
+	
+fin	
+		 
+	

@@ -1,0 +1,44 @@
+
+
+entero cantidad, B500, B200, B100, B50, B20, B10, B5, B1
+
+Inicio
+
+Escriba "Ingrese cantidad: "
+lea cantidad
+
+B500<-cantidad div 500
+cantidad<-cantidad mod 500
+B200<-cantidad div 200
+cantidad<-cantidad mod 200
+B100<-cantidad div 100
+cantidad<-cantidad mod 100
+B50<-cantidad div 50
+cantidad<-cantidad mod 50
+B20<-cantidad div 20
+cantidad<-cantidad mod 20
+B10<-cantidad div 10
+cantidad<-cantidad mod 10
+B5<-cantidad div 5
+cantidad<-cantidad mod 5
+B1<-cantidad div 1
+cantidad<-cantidad mod 1 
+
+escriba "Billetes de 500: ", B500
+Llamar nueva_linea  
+escriba "Billetes de 200: ", B200
+Llamar nueva_linea  
+escriba "Billetes de 100: ", B100
+Llamar nueva_linea  
+escriba "Billetes de 50: ", B50
+Llamar nueva_linea  
+escriba "Billetes de 20: ", B20
+Llamar nueva_linea  
+escriba "Billetes de 10: ", B10
+Llamar nueva_linea 
+escriba "Billetes de 5: ", B5
+Llamar nueva_linea
+escriba "Billetes de 1: ", B1
+Llamar nueva_linea     
+
+fin

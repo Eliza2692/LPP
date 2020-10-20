@@ -1,0 +1,14 @@
+//declaracion de arreglos//
+arreglo[10] de entero Va
+arreglo[10] de entero Vb
+
+//declaracion de variable//
+entero i,j
+caracter sw
+
+//programa principal//
+
+inicio
+		para i<-1 hasta 10 
+		
+		

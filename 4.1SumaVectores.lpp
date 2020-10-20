@@ -1,0 +1,35 @@
+//declaracion de arreglo
+
+arreglo [10] de entero A
+arreglo [10] de entero B
+
+//Declaracion de variables
+
+entero i
+
+//Inicio del programa
+
+inicio
+
+//ingreso de vectores
+
+	para i<-1 hasta 10 haga
+
+ 	Escriba "Digite posicion: ", i
+ 	LLamar nueva_linea() 
+ 	Escriba "Vector A: "
+ 	lea A[i]
+ 	escriba "Vector B: "
+	lea B[i]
+	
+	fin para
+	
+//Suma de vectores "Salida" 	
+	
+	para i<-1 hasta 10 haga
+ 		Escriba "A(",A[i],") + B(",B[i],") = ", A[i]+B[i]
+		llamar nueva_linea()	
+	fin para
+
+Fin
+	

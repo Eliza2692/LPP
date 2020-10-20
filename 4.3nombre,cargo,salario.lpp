@@ -1,0 +1,131 @@
+// declaracion de arreglo
+
+arreglo [1000] de cadena [100] NombApell
+arreglo [1000] de cadena [50] Cargo
+arreglo [1000] de cadena [50] Salario
+
+//Declaraciòn de Variables
+
+entero i,j,k
+caracter sw, enter
+cadena [50]aux,aux2,aux3
+
+//inicio del programa
+
+inicio
+
+	sw<-'s'
+	i<-1
+	mientras ((sw='s') o (sw='S')) y (i<1001) haga
+		Escriba "Nombres y Apellidos: "
+		lea NombApell[i]
+		Escriba "Cargo: "
+		lea Cargo[i]
+		Escriba "Salario: "
+		Lea Salario[i]
+		Escriba "Desea continuar? S/N "
+		lea sw
+		llamar limpiar_pantalla()
+		i<-i+1
+	fin mientras
+	k<-i-1
+	
+//Ordenar por Salario 
+	
+	i<-2
+	mientras (i<=k) haga
+		j<-1
+		mientras (j<=(k-1)) haga
+			si (Salario[j]>Salario[j+1]) entonces
+		 		aux<-Salario[j]
+		 		aux2<-Cargo[j]
+		 		aux3<-NombApell[j]
+		 		Salario[j]<-Salario[j+1]
+		 		Cargo[j]<-Cargo[j+1]
+		 		NombApell[j]<-NombApell[j+1]
+		 		Salario[j+1]<-aux
+		 		Cargo[j+1]<-aux2
+		 		NombApell[j+1]<-aux3
+		 	fin si
+		 	j<-j+1	
+		 fin mientras
+		 i<-i+1
+	fin mientras
+	
+//mostrar por orden Salario
+
+	escriba "El trabajador con menor salario es:"
+	llamar nueva_linea()
+	escriba "Nombre y Apellidos: ", NombApell[1]
+	llamar nueva_linea()
+	escriba "Cargo: ", Cargo[1]
+	llamar nueva_linea()
+	escriba "Salario: ", Salario[1]
+	llamar nueva_linea()
+	escriba "_____________________________________________________"
+	llamar nueva_linea()
+	escriba "El trabajador con mayor salario es:"
+	llamar nueva_linea()
+	escriba "Nombre y Apellidos: ", NombApell[k]
+	llamar nueva_linea()
+	escriba "Cargo: ", Cargo[k]
+	llamar nueva_linea()
+	escriba "Salario: ", Salario[k]
+	llamar nueva_linea()
+	
+	Escriba "Enter"
+	lea enter
+	
+//Ordenar por Cargo 
+	
+	LLamar limpiar_pantalla()
+	i<-2
+	mientras (i<=k) haga
+		j<-1
+		mientras (j<=(k-1)) haga
+			si (Cargo[j]>Cargo[j+1]) entonces
+		 		aux<-Cargo[j]
+		 		Cargo[j]<-Cargo[j+1]
+		 		Cargo[j+1]<-aux
+		 	fin si
+		 	j<-j+1	
+		 fin mientras
+		 i<-i+1
+	fin mientras
+
+//mostrar cargos
+	Escriba "Cargos"
+	llamar nueva_linea()
+	Para i<-1 hasta k haga
+		si Cargo[i]<>Cargo[i+1] entonces
+			escriba Cargo[i]
+		fin si
+		llamar nueva_linea()
+	fin para
+
+	Escriba "Enter"
+	lea enter
+	
+//mostrar trabajadores,cargos,salario
+
+	LLamar limpiar_pantalla()
+	Escriba "Lista"
+	llamar nueva_linea()
+	i<-1
+	mientras (i<=k) haga
+		escriba "Nombre y Apellidos: ", NombApell[i]
+		llamar nueva_linea()
+		escriba "Cargo: ", Cargo[i]
+		llamar nueva_linea()
+		escriba "Salario: ", Salario[i]
+		llamar nueva_linea()
+		llamar nueva_linea()
+		i<-i+1
+	fin mientras 
+
+	Escriba "Enter"
+	lea enter
+
+fin	
+		 
+	

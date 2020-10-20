@@ -1,0 +1,52 @@
+//declaracion de arreglo
+
+arreglo [5,5] de entero n
+arreglo [5] de entero sumfila
+arreglo [5] de entero sumcolumna
+
+//declaracion de variables
+
+entero i,j,sumfil,sumcol,k,l
+
+inicio
+
+//llenar la matriz
+//recorrer fila
+	
+	para i<-1 hasta 5 haga
+		llamar limpiar_pantalla()
+		Escriba "Fila ",i
+		llamar nueva_linea()
+		
+//recorrer columnas
+		
+		para j<-1 hasta 5 haga
+		escriba "Valor de la posicion [",i,",",j,"]: "
+		lea n[i,j]
+		fin para
+	fin para
+
+//sumar filas
+
+	sumfil<-0
+	para i<-1 hasta 5 haga
+		Para j<-1 hasta 5 haga
+			sumfil<-sumfil+n[i,j]
+		Fin para
+		sumfila[i]<-sumfil
+	fin para
+
+//sumar columnas
+
+	sumcol<-0
+	para i<-1 hasta 5 haga
+		Para j<-1 hasta 5 haga
+			sumcol<-sumcol+n[i,j]
+		Fin para
+		sumcolumna[i]<-sumcol
+	fin para
+
+// escribir matriz
+
+
+fin
