@@ -1,0 +1,38 @@
+//Declaraciòn de arreglo
+
+arreglo [50] de entero a
+
+//Decalarcion de variables
+
+entero i,j
+caracter s
+
+inicio
+
+j<-2
+
+// ciclo para llenar el arreglo con los nuemros pares
+
+para i<-1 hasta 50 haga 
+	a[i]<-j
+	j<-j+2
+fin para
+
+//ciclo para mostrar los valores del aregglo
+
+para i<-1 hasta 50 haga
+	escriba "Posiciòn: ", i, " Valor ", a[i]
+	llamar nueva_linea 
+//condicion para detener los valores en pantalla de 20 en 20
+	si i mod 20=0 entonces
+		escriba "pulse enter para continuar"
+		lea s
+		llamar limpiar_pantalla()
+	fin si
+fin para
+
+//pulse enter para continuar 
+escriba "pulse enter para terminar"
+lea s
+
+fin

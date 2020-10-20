@@ -1,0 +1,28 @@
+
+Caracter sw
+real Cop, Cady, Hipotenusa
+
+Inicio
+
+sw <- 's'
+
+Mientras (sw='s') o (sw='S') haga
+
+	Escriba "Cateto Opuesto: "
+	lea Cop
+
+	Escriba "Cateto Adyacente: "
+	lea Cady
+
+	Hipotenusa<- (Cop^2+Cady^2)^(1/2)
+
+	escriba "La hipotenusa del triangulos es: ", Hipotenusa
+
+	Llamar nueva_linea
+	
+	escriba "¿Desea calcular otro triangulo?: S/N "
+	lea sw
+	
+fin mientras
+
+fin

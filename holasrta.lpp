@@ -1,0 +1,35 @@
+///////////////////////////////////////
+//Archivo: Saludos, cumpleaños y genero
+//Autor: Elizabeth Elena Alarcón Pantoja//
+//Fecha:05/05/2015
+//Descripción: diferencia los números menores//
+/////////////////////////////////////////////////////////////////////////////////////////
+
+//Bloque de declaración
+
+cadena [100] nombre, apellido, sexo
+
+//bloque de procedimientos y funciones
+
+//programa principal
+
+Inicio
+	escriba "Digite su sexo (F si es femenino o M si es masculino)"
+	lea sexo
+	llamar nueva_linea
+	escriba "Digite su nombre:"
+	lea nombre
+	llamar nueva_linea
+	escriba "Digite su apellido:"
+	lea apellido
+	llamar nueva_linea
+	si sexo="F" entonces
+		escriba "Hola señorita: ", nombre, " ", apellido
+	sino
+		si sexo="M" entonces
+			escriba "Hola señor: ", nombre, " ", apellido
+		sino
+			escriba "Hola otros"
+		fin si
+	fin si
+fin
