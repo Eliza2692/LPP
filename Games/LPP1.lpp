@@ -1,0 +1,42 @@
+
+
+entero num, i, exp,conv, sumar, mult
+
+Inicio
+
+
+
+escriba "numero"
+lea num
+
+si num<10 entonces
+	exp<-1
+sino 
+	i<-1
+	mientras ((num/(10^(i-1)))>9) haga
+		exp<-i
+		i<-i+1
+	fin mientras
+	exp<-exp+1
+fin si
+llamar nueva_linea
+escriba exp
+llamar nueva_linea
+
+conv<-0
+
+para i<-1 hasta exp haga
+/*	mult<- num div (10^(exp-i))
+	sumar<-mult*(2^(exp-i))
+	conv<-conv+sumar
+	num<-(num mod (10^(exp-i)))
+	llamar nueva_linea
+	escriba conv*/
+suma<-((num div (10^(exp-i)))*(2^(exp-i)))
+conv <- conv +  suma
+num<-(num mod (10^(exp-i)))
+fin para
+
+escriba conv
+
+fin

@@ -1,0 +1,124 @@
+Arreglo [5,5] de entero oculta
+entero i, j, ctdminas,puntos 
+
+//Asignar minas//
+
+Procedimiento Asignar_minas(entero i, entero j)
+entero i, j
+inicio
+	ctdminas<-0
+	llamar inicializar_aleatorio() 
+	Para i<-1 hasta 5 haga
+		para j<-1 hasta 5 haga			
+			si ctdminas<=23 entonces
+				oculta[i,j]<-aleatorio()*1000
+				si oculta[i,j]<500 entonces
+					ctdminas<-ctdminas+1
+				fin si
+			sino
+				oculta[i,j]<-750
+			fin si	
+		fin para
+	fin para
+fin
+	
+	
+// Pintar tablero inicial
+
+Procedimiento Tablero_Inicial(entero i, entero j)
+entero i, j
+inicio
+	puntos<-0
+	llamar posicionar_cursor(2,2)
+	escriba "Cantidad de minas: ", ctdminas
+	llamar nueva_linea()
+	llamar nueva_linea()
+	i<-2
+	mientras i<=10 haga 
+		j<-2
+		mientras j<=10 haga
+			llamar posicionar_cursor(2+i,2+j)
+			escriba "O"
+			j<-j+2
+		fin mientras
+		i<-i+2
+	fin mientras
+	llamar posicionar_cursor(2,14)
+	escriba "Puntuación: "
+	llamar posicionar_cursor(2,16)
+	escriba "Columna	>> "
+	llamar posicionar_cursor(2,18)
+	escriba "Fila		>> "
+		
+fin
+
+//Juego principal
+
+Procedimiento Juego_Principal(entero fila, entero columna)
+caracter sw
+entero fila, columna,i, libre, j, k
+inicio 	
+	libre<-25-ctdminas
+	sw<-'s'
+	puntos<-0
+
+	mientras ((sw='s') o (sw='S')) y (i<>libre) haga
+		llamar posicionar_cursor(20,16)
+		lea fila
+		llamar posicionar_cursor(20,18)
+		lea columna
+			si (fila<=5) y (columna<=5) entonces
+			si oculta[fila,columna]<500 entonces
+				k<-1
+				mientras k<=5 haga 
+					j<-1
+					mientras j<=5 haga
+						llamar posicionar_cursor(2+(k*2),2+(j*2))
+						si oculta[k,j]<500 entonces
+							escriba "X"
+						sino
+							escriba " "
+						fin si	
+						j<-j+1
+					fin mientras
+					k<-k+1
+				fin mientras
+				llamar posicionar_cursor(2,20)
+				escriba "Ha perdido!!!. ¿Desea continuar jugando? S/N"
+				lea sw
+				si sw='s' entonces
+					ctdminas<-0
+					llamar Asignar_minas()	
+					llamar Tablero_inicial()
+						libre<-25-ctdminas
+						sw<-'s'
+						puntos<-0
+						llamar posicionar_cursor(20,14)
+						escriba "0"	
+				fin si
+			sino
+				llamar posicionar_cursor(2+(fila*2),2+(columna*2))
+				escriba "?"
+				puntos<-puntos+5
+				llamar posicionar_cursor(20,14)
+				escriba Puntos			
+			fin si
+			fin si	
+	fin mientras
+fin
+		
+//Programa principal
+
+inicio
+	
+	llamar Asignar_minas()	
+	llamar Tablero_inicial()
+	llamar Juego_Principal()
+	
+fin
+
+
+
+
+
+

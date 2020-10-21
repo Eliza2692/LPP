@@ -1,0 +1,133 @@
+arreglo [10] de caracter v1, v2, v3
+caracter m1, m2, m3
+entero puntuacion
+
+//Temporizador(entero tiempo)
+	entero i,j,n, tiempo
+inicio
+	n<-aleatorio() * 700 +1
+	para i<- 1 hasta n haga
+		para j<- 1 hasta tiempo haga
+		fin para		
+	fin para
+fin
+
+
+//Centrar Texto
+
+procedimiento CentrarTexto(cadena[80] texto, entero f)
+ 	entero c
+inicio
+	c <- (80-longitud(texto))/2
+	llamar TextoXY(texto,f,c)
+fin
+
+//Poscisionar texto
+
+procedimiento TextoXY(cadena[80] texto, entero f, entero c)
+inicio
+	llamar posicionar_cursor(c,f)
+	escriba texto
+fin
+
+//Marco 80x
+procedimiento CrearMarco(cadena[1] c, entero x1, entero y1, entero x2, entero y2)
+	entero j
+inicio 
+	para j<- x1 hasta x2 haga
+		llamar TextoXY(c, y1,j)
+		llamar TextoXY(c,y2,j)
+	fin para	
+	para j<- y1 hasta y2 haga
+		llamar TextoXY(c, j,x1)
+		llamar TextoXY(c, j, x2)
+	fin para	
+fin
+
+//Pantalla Principal
+
+Procedimiento PantallaFija
+Inicio 
+	llamar CrearMarco ("*",1,2,80,24)
+	LLAMAR CentrarTexto("TRAGA-MONEDAS", 4)
+	llamar CrearMarco ("/",9,9,15,13)
+	llamar CrearMarco ("/",15,9,21,13)
+	llamar CrearMarco ("/",21,9,27,13)
+	llamar ListadePremios	
+fin
+
+//Lista de premios
+
+procedimiento ListadePremios
+inicio
+	llamar TextoXY(" LISTA DE PREMIOS ", 7,35)
+	llamar TextoXY(" 7 / 7 / 7 --> $7.000", 9,30)
+	llamar TextoXY(" Iguales   --> $3.000", 11,30)
+	llamar TextoXY(" # / > / + --> $1.500", 13,30)
+	llamar TextoXY(" @ / > / @ --> $1.000", 15,30)
+	llamar TextoXY(" % / # / K --> $700", 17,30)
+	llamar TextoXY(" + / # / < --> $350", 19,30)
+fin
+
+
+//Puntuación 
+procedimiento VerificarResultado
+inicio
+	si(m1="7")y(m2="7") y(m3="7") entonces
+		puntuacion<- puntuacion + 7000
+	sino
+		si(m1=m2)y (m2=m3) entonces
+			puntuacion<- puntuacion + 3500
+		sino
+			si (m1="/")y (m2=">") y (m3="$") entonces
+				puntuacion<- puntuacion + 1500
+				sino 
+					si(m1="$")y (m2=">") y (m3="$")entonces
+						puntuacion<- puntuacion + 1000
+						sino
+							si((m1="&")y (m2="/") y (m3="A "))entonces
+								puntuacion<- puntuacion + 700
+							sino 
+								si((m1="*")y (m2="/") y (m3="<")) entonces
+									puntuacion<- puntuacion + 350
+								
+								fin si
+							fin si
+					fin si
+			fin si
+		fin si
+	fin si	
+	
+	llamar posicionar_cursor(50,2)
+
+	escriba "Puntuacion >> ", puntuacion
+fin
+
+
+//Iniciar vector
+
+procedimiento inicializarVectores
+	entero x, i,p
+inicio
+	v1[1]<-"+"
+	v1[2]<-"7"
+	v1[3]<-"#"
+	v1[4]<-"%"	
+	v1[5]<-"K"
+	v1[6]<-"?"
+	v1[7]<-">"
+	v1[8]<-"<"	
+	v1[9]<-"@"
+	v1[10]<-"X"
+	
+	para i<-1 hasta 10 haga
+		v2[i]<- v1[i]
+		v3[i]<- v1[i]
+	fin para
+fin
+
+//Programa principal
+
+Inicio 
+	llamar PantallaFija
+fin

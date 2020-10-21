@@ -1,0 +1,227 @@
+ arreglo [9,9] de entero sudoku
+
+	//LLENAR MATRIZ DE CERO
+		//Llena la matriz de cero para comparación de valores iniciales
+		procedimiento llenarcero
+		entero i,j
+		inicio
+			para i<-1 hasta 9 haga
+				para j<-1 hasta 9 haga
+					sudoku[i,j]<-0
+				fin para
+			fin para
+		fin 
+
+	//CENTRAR TEXTO
+		//Centra el texto en la pantalla
+		procedimiento CentrarTexto(cadena[80] texto, entero f)
+ 		entero c
+		inicio
+			c <- (80-longitud(texto))/2
+			llamar TextoXY(texto,f,c)
+		fin
+
+	//POSICIONAR TEXTO
+		//Posiciona el texto en el lugar especificado de la pantalla
+		procedimiento TextoXY(cadena[80] texto, entero f, entero c)
+		inicio
+			llamar posicionar_cursor(c,f)
+			escriba texto
+		fin
+
+	//POSICIONAR TEXTO ENTERO
+		//Posiciona el texto en el lugar especificado de la pantalla
+		procedimiento TextoEntXY(entero texto, entero f, entero c)
+		inicio
+			llamar posicionar_cursor(c,f)
+			escriba texto
+		fin
+
+	//MARCO PANTALLA
+		//Dibujar un marco en la pantalla
+		procedimiento CrearMarco(cadena[1] c, entero x1, entero y1, entero x2, entero y2)
+		entero j
+		inicio 
+			para j<- x1 hasta x2 haga
+				llamar TextoXY(c, y1,j)
+				llamar TextoXY(c,y2,j)
+			fin para	
+			para j<- y1 hasta y2 haga
+				llamar TextoXY(c, j,x1)
+				llamar TextoXY(c, j, x2)
+			fin para	
+		fin
+
+	//PANTALLA PRIMCIPAL
+		//Dibuja el cuadro de juego y los tableros de puntuación
+		Procedimiento PantallaFija
+		entero i 
+		Inicio 
+			llamar CrearMarco ("*",1,2,80,24)
+			llamar textoxy("SUDOKU", 4, 55)
+			//Filas		
+			Para i<-1 hasta 9 haga
+				llamar textoentxy(i, 4+(i*2), 6)
+			fin para
+			Para i<-1 hasta 4 haga
+				llamar textoxy("----------------------------",(i*6)-1, 6)
+			fin para
+			//Columnas
+			Para i<-1 hasta 9 haga
+				llamar textoentxy(i, 4, 6+(3*i))
+			fin para
+			Para i<-4 hasta 23 haga
+				llamar textoxy("!",i,7)
+				llamar textoxy("!",i,16)
+				llamar textoxy("!",i,25)
+				llamar textoxy("!",i,34)
+			fin para
+			llamar textoxy("Fila	>>", 10, 45)
+			llamar textoxy("Columna	>>", 12, 45)
+			llamar textoxy("Numero	>>", 14, 45)
+		fin
+
+	//ASIGNAR VALOR A LOS OPERADORES
+		//Asigna valor a los operadores para la validacion de la matriz 3x3
+		Procedimiento ValorJK
+		entero  j1, j2, k1, k2
+		Real fil, col
+		Inicio
+			Si  (fil <=1) entonces
+				j1<-1
+				j2<-2
+			sino  
+				Si (fil>1) y (fil <=2) entonces
+					j1<-4
+					j2<-6
+				sino
+					Si  (fil>2) y (fil <=3) entonces
+						j1<-7
+						j2<-9
+					fin si
+				fin si
+			fin si
+			Si  (col <=1) entonces
+				k1<-1
+				k2<-2
+			sino  
+				Si (col>1) y (col <=2) entonces
+					k1<-4
+					k2<-6
+				sino
+					Si  (col>2) y (col <=3) entonces
+						k1<-7
+						k2<-9
+					fin si
+				fin si
+			fin si
+		fin
+			
+	//VALIDACION DE MATRIZ 3X3
+		//Valida la matriz 3x3
+		Procedimiento Validarmatriz3x3
+		entero  j, k, j1, j2, k1, k2, dif,n
+		Real fil, col
+		Inicio
+			j<-j1
+			mientras ((j<=j2) y (dif=0)) haga
+				k<-k1
+				mientras ((k<=k2) y (dif=0)) haga
+					si n<>sudoku[j,k] entonces
+						dif<-0
+					sino
+						dif<-1
+					fin si
+					k<-k+1
+				fin mientras
+				j<-j+1
+			fin mientras
+		fin
+	
+	//COMPARAR FILAS Y COLUMNAS
+		//Compara el valor de dif en filas y columnas
+		Procedimiento FilasyColumnas
+		entero i, dif, j
+		Inicio
+			i<-1
+			mientras (dif=0) y (i<10) haga
+				si (n<>sudoku[fila,i]) y (n<>sudoku[i,columna]) entonces
+					dif<-0
+				sino 
+					dif<-1		
+				fin si
+				i<-i+1
+			fin mientras
+		fin
+	
+	//PROCEDIMIENTO LIMPIARPANTA
+		//Limpia la pantalla despues de cada jugada
+		Procedimiento Limpiarpant
+		entero i
+		Inicio
+			para i<-1 hasta 3 haga
+				llamar textoxy("                                  ", 16+(i*2), 38)
+				llamar textoxy("   ", 8+ (i*2), 59)
+			fin para
+		fin
+	
+										
+	//JUGAR
+	Procedimiento Jugar
+	entero fila, columna, n,i, dif, j, k, XE, YE, j1, j2, k1, k2,m
+	real fil, col
+	caracter sw
+	Inicio	
+		sw<-'s'
+		//Limpiar pantalla
+		mientras ((sw='s') o (sw='S')) haga
+			LLamar Limpiarpant 
+			//pedir posiciones y numero
+			llamar posicionar_cursor(59,10)
+			lea fila
+			llamar posicionar_cursor(59,12)
+			lea columna
+			llamar posicionar_cursor(59,14)
+			lea n
+			//Inicializar variables
+			fil<-fila/3
+			col<-columna/3
+			m<-1
+			dif<-0
+			XE<- 4+(2*fila)
+			YE<- 6+(3*columna)
+			//Comparar numero
+			mientras (dif=0) y (m<10) haga
+				si (n>0) y (n<10) entonces
+					//comparativo filas y columnsa
+					LLamar FilasyColumnas
+					si dif=0 entonces
+						LLamar ValorJK
+						LLamar Validarmatriz3x3
+					fin si
+				sino
+					dif<-1
+				fin si
+				m<-i+1
+			fin mientras
+			si (dif=0) entonces
+				llamar posicionar_cursor(YE,XE)
+				escriba n
+				sudoku[fila,columna]<-n	
+			sino
+				llamar posicionar_cursor(38,18)
+				escriba n, " ya se encuentra"
+			fin si
+			llamar posicionar_cursor(38,22)
+			escriba "¿Desea continuar? S/N"
+			lea sw	
+		fin mientras
+	fin
+
+//Programa principal
+
+Inicio 
+	llamar llenarcero
+	llamar PantallaFija
+	llamar jugar
+fin

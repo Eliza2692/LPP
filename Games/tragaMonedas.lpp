@@ -1,0 +1,172 @@
+
+arreglo[10] de cadena[1] v1,v2,v3
+cadena[1] m1,m2,m3
+entero puntaje
+
+procedimiento Temporizador(entero tiempo)
+	entero i,j,n
+inicio
+	n<-aleatorio() * 700 +1
+	para i<- 1 hasta n haga
+		para j<- 1 hasta tiempo haga
+		fin para		
+	fin para
+fin
+
+procedimiento inicializarVectores
+	entero x, i,p
+inicio
+	v1[1]<-"*"
+	v1[2]<-"7"
+	v1[3]<-"/"
+	v1[4]<-"&"	
+	v1[5]<-"A"
+	v1[6]<-"="
+	v1[7]<-">"
+	v1[8]<-"<"	
+	v1[9]<-"$"
+	v1[10]<-"?"
+	
+	para i<-1 hasta 10 haga
+		//p<-aleatorio()*9+1 
+		v2[i]<- v1[i]
+		//p<-aleatorio()*9+1
+		v3[i]<- v1[i]
+	fin para
+	
+	
+fin
+
+procedimiento VerificarResultado
+inicio
+	si(m1="7")y(m2="7") y(m3="7") entonces
+		puntaje<- puntaje + 7000
+	sino
+		si(m1=m2)y (m2=m3) entonces
+			puntaje<- puntaje + 3500
+		sino
+			si (m1="/")y (m2=">") y (m3="$") entonces
+				puntaje<- puntaje + 1500
+				sino 
+					si(m1="$")y (m2=">") y (m3="$")entonces
+						puntaje<- puntaje + 1000
+						sino
+							si((m1="&")y (m2="/") y (m3="A "))entonces
+								puntaje<- puntaje + 700
+							sino 
+								si((m1="*")y (m2="/") y (m3="<")) entonces
+									puntaje<- puntaje + 350
+								
+								fin si
+							fin si
+					fin si
+			fin si
+		fin si
+	fin si	
+	
+	llamar posicionar_cursor(50,2)
+
+	escriba "Puntuacion >> ", puntaje
+fin
+
+procedimiento PintarTablaValores
+inicio
+	llamar posicionar_Cursor(50,4)
+	escriba "<< Tabla de valores >>"
+	llamar posicionar_Cursor(50,6)
+	escriba "7  7  7 => 7000"
+	llamar posicionar_Cursor(50,8)
+	escriba "iguales => 3000"
+	llamar posicionar_Cursor(50,10)
+	escriba "/  >  * => 1500"
+	llamar posicionar_Cursor(50,12)
+	escriba "$  >  $ => 1000"
+	llamar posicionar_Cursor(50,14)
+	escriba "&  /  A => 700"
+	llamar posicionar_Cursor(50,16)
+	escriba "*  /  < => 350"	
+fin
+
+procedimiento juegoVector(arreglo[10] de cadena[1] a, entero m, entero tiempo)
+	entero j, k, p
+inicio 
+	k<-(aleatorio()*tiempo+1) 
+		para j<- 1 hasta k haga
+			
+			p<-j
+			si (p> 10) entonces
+				p<- j div 10
+			fin si
+			
+			caso m
+			 1: m1<- v1[p]
+			 2: m2<- v2[p]
+			 3: m3<- v3[p]
+			fin caso
+						
+			llamar posicionar_cursor(10,9)
+			escriba "_________________________"
+			llamar posicionar_cursor(10,10)
+			escriba "|       |       |       |"
+			llamar posicionar_cursor(10,11)
+			escriba "|   " + m1 + "   |   "+ m2 + "   |   "+ m3+ "   |"
+			llamar posicionar_cursor(10,12)
+			escriba "|_______|_______|_______|"
+					
+			llamar Temporizador(4)
+		fin para
+fin
+
+procedimiento jugar
+	caracter sw
+	entero j,k,p
+inicio
+	repita
+	   j<-1
+		llamar limpiar_pantalla()
+		escriba "TragaMonedas....."
+
+		puntaje<- puntaje -500
+		
+		llamar posicionar_cursor(50,2)
+		escriba "Puntuacion >> ", puntaje
+		llamar PintarTablaValores
+		
+		llamar posicionar_cursor(10,9)
+			escriba "_________________________"
+			llamar posicionar_cursor(10,10)
+			escriba "|       |       |       |"
+			llamar posicionar_cursor(10,11)
+			escriba "|   " + m1 + "   |   "+ m2 + "   |   "+ m3+ "   |"
+			llamar posicionar_cursor(10,12)
+			escriba "|_______|_______|_______|"
+			
+			llamar juegoVector(v1,1,aleatorio()*50+1)
+			llamar juegoVector(v2,2,aleatorio()*90+1)
+			llamar juegoVector(v3,3,aleatorio()*30+1)
+			
+		
+		llamar VerificarResultado
+		
+		llamar posicionar_cursor(10,17)
+		escriba "Desea intentarlo otra vez?  s/n"
+		sw<-obtener_Caracter()
+		
+	hasta((sw='n') o (sw='N'))o (puntaje<=0)
+fin
+
+inicio	
+
+	//inicializar variables 
+	puntaje<-10000
+	
+	llamar inicializar_Aleatorio()
+	llamar inicializarVectores()
+	
+	m1<-v1[1]
+	m2<-v2[1]
+	m3<-v3[1]
+	
+	llamar jugar
+	
+fin

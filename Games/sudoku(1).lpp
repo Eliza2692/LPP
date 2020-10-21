@@ -1,0 +1,302 @@
+ arreglo [9,9] de entero sudoku
+
+//LLENAR MATRIZ DE CERO
+procedimiento llenarcero
+entero i,j
+inicio
+	para i<-1 hasta 9 haga
+		para j<-1 hasta 9 haga
+			sudoku[i,j]<-0
+		fin para
+	fin para
+fin 
+
+//Centrar Texto
+
+procedimiento CentrarTexto(cadena[80] texto, entero f)
+ 	entero c
+inicio
+	c <- (80-longitud(texto))/2
+	llamar TextoXY(texto,f,c)
+fin
+
+//Poscisionar texto
+
+procedimiento TextoXY(cadena[80] texto, entero f, entero c)
+inicio
+	llamar posicionar_cursor(c,f)
+	escriba texto
+fin
+
+//Marco 80x
+procedimiento CrearMarco(cadena[1] c, entero x1, entero y1, entero x2, entero y2)
+	entero j
+inicio 
+	para j<- x1 hasta x2 haga
+		llamar TextoXY(c, y1,j)
+		llamar TextoXY(c,y2,j)
+	fin para	
+	para j<- y1 hasta y2 haga
+		llamar TextoXY(c, j,x1)
+		llamar TextoXY(c, j, x2)
+	fin para	
+fin
+
+//Pantalla Principal
+
+Procedimiento PantallaFija
+entero i 
+Inicio 
+	llamar CrearMarco ("*",1,2,80,24)
+	LLAMAR CentrarTexto("SUDOKU", 4)
+//filas		
+		llamar textoxy("----------------------------", 5, 6)
+		llamar textoxy("1", 6, 6)
+		llamar textoxy("2", 8, 6)
+		llamar textoxy("3", 10, 6)
+		llamar textoxy("----------------------------", 11, 6)
+		llamar textoxy("4", 12, 6)
+		llamar textoxy("5", 14, 6)
+		llamar textoxy("6", 16, 6)
+		llamar textoxy("----------------------------", 17, 6)
+		llamar textoxy("7", 18, 6)
+		llamar textoxy("8", 20, 6)
+		llamar textoxy("9", 22, 6)
+		llamar textoxy("----------------------------", 23, 6)
+//columnas
+		llamar textoxy("1", 4, 9)
+		llamar textoxy("2", 4, 12)
+		llamar textoxy("3", 4, 15)
+		llamar textoxy("4", 4, 18)
+		llamar textoxy("5", 4, 21)
+		llamar textoxy("6", 4, 24)
+		llamar textoxy("7", 4, 27)
+		llamar textoxy("8", 4, 30)
+		llamar textoxy("9", 4, 33)			
+		para i<-4 hasta 23 haga
+			llamar	posicionar_cursor(7,i)
+			escriba "!"
+			llamar	posicionar_cursor(16,i)
+			escriba "!"
+			llamar	posicionar_cursor(25,i)
+			escriba "!"
+			llamar	posicionar_cursor(34,i)
+			escriba "!"
+		fin para 	
+		llamar textoxy("Fila	>>", 10, 38)
+		llamar textoxy("Columna	>>", 12, 38)
+		llamar textoxy("Numero	>>", 14, 38)
+fin
+
+//validar filas, columnas y matriz 3x3
+
+//Juegos
+Procedimiento Jugar
+entero fila, columna, n,i, dif, j, k, XE, YE
+real fil, col
+caracter sw
+Inicio	
+	sw<-'s'
+	mientras ((sw='s') o (sw='S')) haga
+	llamar textoxy("                                  ", 18, 38)
+	llamar textoxy("                                  ", 22, 38)
+	llamar textoxy("   ", 10, 52)
+	llamar textoxy("   ", 12, 52)
+	llamar textoxy("   ", 14, 52)
+	llamar posicionar_cursor(52,10)
+	lea fila
+	llamar posicionar_cursor(52,12)
+	lea columna
+	llamar posicionar_cursor(52,14)
+	lea n
+	fil<-fila/3
+	col<-columna/3
+	i<-1
+	dif<-0
+	XE<- 4+(2*fila)
+	YE<- 6+(3*columna)
+	mientras (dif=0) y (i<10) haga
+	si (n>0) y (n<10) entonces
+		//comparativo filas y columnsa
+		si (n<>sudoku[fila,i]) y (n<>sudoku[i,columna]) entonces
+			//comparativo [1,1]
+			si (fil<=1) y (col<=1) entonces
+				j<-1
+				mientras ((j<=3) y (dif=0)) haga
+					k<-1
+					mientras ((k<=3) y (dif=0)) haga
+						si n<>sudoku[j,k] entonces
+							dif<-0
+						sino
+							dif<-1
+						fin si
+						k<-k+1
+					fin mientras
+					j<-j+1
+				fin mientras
+			sino
+			//comparativo [1,2]	
+				si (fil<=1) y (col>1) y (col<=2) entonces
+					j<-1
+					mientras ((j<=3) y (dif=0)) haga
+						k<-4
+						mientras ((k<=6) y (dif=0)) haga
+							si n<>sudoku[j,k] entonces
+								dif<-0
+							sino
+								dif<-1
+							fin si
+							k<-k+1
+						fin mientras
+						j<-j+1
+					fin mientras		
+				sino
+			//comparativo [1,3]	
+					si (fil<=1) y (col>2) y (col<=3) entonces
+						j<-1
+						mientras ((j<=3) y (dif=0)) haga
+							k<-7
+							mientras ((k<=9) y (dif=0)) haga
+								si n<>sudoku[j,k] entonces
+									dif<-0
+								sino
+									dif<-1
+								fin si
+								k<-k+1
+							fin mientras
+							j<-j+1
+						fin mientras
+					sino
+			//comparativo [2,1]
+						si (fil>1) y (fil<=2) y (col<=1) entonces	
+							j<-4
+							mientras ((j<=6) y (dif=0)) haga
+								k<-1
+								mientras ((k<=3) y (dif=0)) haga
+									si n<>sudoku[j,k] entonces
+										dif<-0
+									sino
+										dif<-1
+									fin si
+									k<-k+1
+								fin mientras
+								j<-j+1
+							fin mientras
+			//comparativo [2,2]	
+							si (fil>1) y (fil<=2) y (col>1) y (col<=2) entonces
+							
+								j<-4
+								mientras ((j<=6) y (dif=0)) haga
+									k<-4
+									mientras ((k<=6) y (dif=0)) haga
+										si n<>sudoku[j,k] entonces
+											dif<-0
+										sino
+											dif<-1
+										fin si
+										k<-k+1
+									fin mientras
+									j<-j+1
+								fin mientras
+							sino
+			//comparativo [2,3]	
+								si (fil>1) y (fil<=2) y (col>2) y (col<=3) entonces
+									j<-4
+									mientras ((j<=6) y (dif=0)) haga
+										k<-7
+										mientras ((k<=9) y (dif=0)) haga
+											si n<>sudoku[j,k] entonces
+												dif<-0
+											sino
+												dif<-1
+											fin si
+											k<-k+1
+										fin mientras
+										j<-j+1
+									fin mientras
+								sino
+			//comparativo [3,1]
+									si (fil>2) y (fil<=3) y (col<=1) entonces	
+										j<-7
+										mientras ((j<=9) y (dif=0)) haga
+											k<-1
+											mientras ((k<=3) y (dif=0)) haga
+												si n<>sudoku[j,k] entonces
+													dif<-0
+												sino
+													dif<-1
+												fin si
+												k<-k+1
+											fin mientras
+											j<-j+1
+										fin mientras
+									sino
+			//comparativo [3,2]	
+										si (fil>2) y (fil<=3) y (col>1) y (col<=2) entonces
+											j<-7
+											mientras ((j<=9) y (dif=0)) haga
+												k<-4
+												mientras ((k<=6) y (dif=0)) haga
+													si n<>sudoku[j,k] entonces
+														dif<-0
+													sino
+														dif<-1
+													fin si
+													k<-k+1
+												fin mientras
+												j<-j+1
+											fin mientras
+										sino
+			//comparativo [3,3]
+											si (fil>2) y (fil<=3) y (col>2) y (col<=3) entonces
+												j<-7
+												mientras ((j<=9) y (dif=0)) haga
+													k<-7
+													mientras ((k<=9) y (dif=0)) haga
+														si n<>sudoku[j,k] entonces
+															dif<-0
+														sino
+															dif<-1
+														fin si
+														k<-k+1
+													fin mientras
+													j<-j+1
+												fin mientras
+											fin si
+										fin si
+									fin si
+								fin si
+							fin si
+						fin si
+					fin si
+				fin si
+			fin si
+		sino
+			dif<-2
+		fin si
+	fin si
+	i<-i+1	
+	fin mientras
+			si (dif=0) entonces
+			llamar posicionar_cursor(YE,XE)
+			escriba n
+			sudoku[fila,columna]<-n
+			llamar posicionar_cursor(38,16)
+			escriba "                     "	
+		sino
+			llamar posicionar_cursor(38,18)
+			escriba n, " ya se encuentra"
+		fin si
+			llamar posicionar_cursor(38,22)
+			escriba "¿Desea continuar? S/N"
+			lea sw	
+	fin mientras
+fin
+
+//Programa principal
+
+Inicio 
+	llamar llenarcero
+	llamar PantallaFija
+	llamar jugar
+fin
