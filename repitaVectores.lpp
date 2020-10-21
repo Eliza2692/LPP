@@ -1,0 +1,45 @@
+///DECLARACION DE VARIABLES
+
+arreglo[10] de entero V
+entero i
+
+caracter c
+
+
+inicio
+ 	//inicializacion de variable
+ 	/*i<-1
+ 	
+ 	repita
+ 		escriba "Digite un numero en la posicion [",i,"]:"
+ 		lea v[i]
+ 		i<-i +1
+ 	hasta(i>10)
+ 	
+ 	lea c
+ 	
+ 	i<-1
+ 	repita
+ 		escriba "v[",i,"]=", v[i]
+ 		llamar nueva_linea()
+ 		i<-i+1
+ 	hasta(i>10)	
+ 	*/
+ 	
+ 	/////////////////////////////////usando para///////////////////
+ 	escriba "utilizando el ciclo para"
+ 	para i<-1 hasta 10 haga
+ 		escriba "digite un numero"
+ 		lea v[i]
+ 	fin para
+ 	llamar nueva_linea()
+ 	/////////////usando el mientras
+ 	i<-1
+ 	escriba "utilizando el ciclo para"
+ 	mientras(i<11) haga
+ 		escriba "v[",i,"]=", v[i]
+ 		llamar nueva_linea()
+ 		i<-i+1
+ 	fin mientras
+fin 
+

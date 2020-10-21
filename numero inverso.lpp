@@ -1,0 +1,31 @@
+
+
+entero num,i, num1, inverso, cociente
+
+inicio
+
+escriba "digite un numero de cinco cifras: "
+lea num
+
+si num<100000 entonces
+
+	num1<-num
+	inverso<-0
+
+	para i<-1 hasta 5 haga
+
+		cociente <- num div 10^(5-i)
+		num <- num-(cociente*10^(5-i))
+		inverso <- inverso+(cociente*10^(i-1))
+
+	fin para
+
+	escriba "El inverso del numero ", num1, " es ", inverso
+
+sino
+
+	escriba "El numero ",num, " es de mas de 5 cifras"
+
+fin si
+
+fin 

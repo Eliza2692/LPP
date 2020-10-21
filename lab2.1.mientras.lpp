@@ -1,0 +1,80 @@
+//declaracion de arreglo
+
+arreglo [1000] de entero v
+
+//declaracion de variables
+
+entero i,j,sum,mayor, menor
+real prom
+caracter sw
+
+// programa principal
+
+inicio
+
+sw<-'s'
+i<-1
+
+//llenar vector
+
+mientras (sw='s') o (sw='S') y (i<1001) haga
+
+	escriba "Valor Numerico"
+	lea v[i]
+	i<-i+1
+	
+	Escriba "Desea continuar? S/N"
+	lea sw
+
+fin mientras
+
+// Calcular valores
+
+j<-1
+sum<-0
+mayor<- v[1]
+menor<- v[1]
+
+mientras (j<i) haga
+	sum<-sum+v[j]
+	si v[j]>mayor entonces
+		mayor<-v[j]
+	fin si
+	si v[j]<menor entonces
+		menor<-v[j]
+	fin si
+	
+		j<-j+1
+		
+fin mientras
+
+//salida de valores
+
+llamar limpiar_pantalla()
+Escriba "Numeros: "
+llamar nueva_linea
+
+Para i<-1 hasta j-1 haga
+
+escriba "V[",i,"]= ",v[i]
+llamar nueva_linea
+
+fin para
+
+escriba "Mayor: ", mayor
+llamar nueva_linea
+escriba "Menor: ", menor
+llamar nueva_linea
+escriba "Suma. ", sum
+llamar nueva_linea
+escriba "Ctdad Numeros: ", j-1
+llamar nueva_linea
+escriba "promedio: ", sum/(j-1)
+
+//lectura para salida del programa
+
+llamar nueva_linea
+escriba "Enter"
+lea sw
+
+fin

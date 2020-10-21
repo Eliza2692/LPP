@@ -1,0 +1,191 @@
+//////////////////////////////////////////////////////////////////////////////////////
+//Programa:			empleados														//
+//Descripciòn:		Utilizacion de registros, vectores, funciones y procedimientos	//
+//Autor:																			//
+//Fecha:			28/05/2015														//
+//////////////////////////////////////////////////////////////////////////////////////
+
+//Declaracion de registro (Nuevo tipo de dato)
+
+registro empleados
+	entero codigo
+	Cadena [100] nombre
+	Caracter genero
+	cadena [100] cargo
+	real salario
+fin registro
+
+//declaracion de variables
+
+arreglo [100] de empleados emp
+entero i
+
+// procedimiento para continuar, antes de salir
+
+procedimiento esperar
+	caracter sw
+inicio 
+	llamar nueva_linea()
+	llamar nueva_linea()
+	escriba "<< Presione enter para continuar >>"
+	lea sw
+fin
+
+//funcion para encontrar un empleado por el codigo
+// retorno 1 o caulquier valor si el empleado esta registrado
+// retorno 0 no se encuentra el esmpelado 
+
+funcion encontrarempleados(entero cod):entero
+	entero p
+inicio
+	p<-1
+	mientras (p<i) haga
+		si (emp[p].codigo=cod) entonces 
+			retorne p
+		fin si
+		p<-p+1
+	fin mientras
+	retorne 0
+fin
+
+//procedimientos para mostrar los datos de un empleado
+
+procedimiento mostrardato(entero cod)
+	entero pos
+	cadena [20] c
+Inicio
+	si (cod<>"") entonces
+		pos<- encontrarempleados(cod)
+	sino
+		llamar limpiar_pantalla()
+		escriba "**** MOSTRAR LOS DATOS DEL EMPLEADO DETERMINADO ****"
+		llamar nueva_linea()
+		llamar nueva_linea()
+		llamar limpiar_pantalla
+		escriba "Digite el codigo del empleado >> "
+		lea c
+		llamar mostrardato(c)
+	fin si
+	escriba "Codigo		>> ", emp[pos].codigo
+	llamar nueva_linea
+	escriba "Nombre		>> ", emp[pos].nombre
+	llamar nueva_linea
+	escriba "Genero		>> ", emp[pos].genero
+	llamar nueva_linea
+	escriba "Cargo		>> ", emp[pos].cargo
+	llamar nueva_linea
+	escriba "Salario	>> ", emp[pos].salario
+	llamar esperar
+fin
+
+//procedimientos para llenar el vector
+
+procedimiento Ingresarempleado
+	caracter sw
+	entero cod
+inicio
+	repita
+		llamar limpiar_pantalla
+		escriba "****INGRESAR EMPLEADOS****"
+		llamar nueva_linea()
+		llamar nueva_linea()
+		escriba "Empleado Nº ", i
+		llamar nueva_linea()
+		escriba "Codigo     	>> "
+		lea cod
+		si (encontrarempleados(cod=0)) entonces
+		emp[i].codigo<-cod
+			escriba "Nombre     	>> "
+			lea emp[i].nombre
+			escriba "Genero. F/M   	>> "
+			lea emp[i].genero
+			escriba "Salario		>> "
+			lea emp[i].salario
+			llamar nueva_linea()
+			llamar nueva_linea()
+			i<-i+1
+		Sino
+			escriba "¡¡¡ ERROR: El codigo ingresado ya esta registrado !!!"
+			llamar nueva_linea
+			llamar mostrardato
+		fin si
+		llamar nueva_linea()
+		llamar nueva_linea()
+		escriba "¿Desea continuar S/N?"
+		lea sw
+	hasta (sw<>'s')
+	llamar esperar
+fin
+
+// procedimiento para mostrar valores que contiene el vector
+
+procedimiento mostrarempleados
+	caracter sw
+	entero p
+inicio
+	p<-1
+	repita
+		llamar limpiar_pantalla()
+		escriba "****NOMINA DE EMPLEADOS****"
+		LLAMAR nueva_linea()
+		llamar nueva_linea()
+		escriba "Empleado Nº ", p
+		llamar nueva_linea()
+		escriba "Codigo			>> ", emp[p].codigo
+		llamar nueva_linea()
+		escriba "Nombre			>> ", emp[p].nombre
+		llamar nueva_linea()
+		escriba "Genero			>> ", emp[p].genero
+		llamar nueva_linea()
+		escriba "Cargo			>> ", emp[p].cargo
+		llamar nueva_linea()
+		escriba "Salario		>> ", emp[p].salario
+		LLAMAR nueva_linea()
+		llamar nueva_linea()
+		escriba "Pulse enter para ver otro empleado"
+		lea sw
+		p<-p+1
+	HASTA (p>=i)
+	llamar esperar
+fin
+
+//Procedimiento para mostrar el memu principar
+
+procedimiento menu
+	caracter sw
+inicio
+	repita 
+		llamar limpiar_pantalla()
+		escriba "**** MENU PRINCIPAL ****"
+		LLAMAR nueva_linea()
+		LLAMAR nueva_linea()
+		escriba "1. Ingresar Empleados"
+		LLAMAR nueva_linea()
+		escriba "2. Mostrar Nomina"
+		LLAMAR nueva_linea()
+		escriba "3. Mostrar Datos de Empleado"
+		LLAMAR nueva_linea()
+		escriba "4. Salir"
+		LLAMAR nueva_linea()
+		LLAMAR nueva_linea()
+		escriba "Digite la opcion correspondiente >>"
+		lea sw
+		caso sw
+			'1': llamar Ingresarempleado
+			'2': llamar mostrarempleados
+			'3': llamar mostrardato("")
+		fin caso
+	hasta (sw='4')
+fin
+
+
+//Programa principal
+
+Inicio
+
+//Inicializacion de variables
+
+i<-1
+	llamar menu
+	llamar esperar
+fin

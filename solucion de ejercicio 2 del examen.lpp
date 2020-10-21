@@ -1,0 +1,51 @@
+arreglo[200] de cadena[50] nombre
+arreglo[200] de real n1,n2,n3,n4,def
+
+
+entero i,ctd,posicion
+caracter sw
+real mayor 
+inicio 
+	  i<-1
+	  sw<-'s'
+	  mientras (sw='s') y (i<=200) haga
+	  	escriba "digite el nombre del estudiante:"
+	  	lea nombre [i]
+	  	escriba "digite la nota 1:"
+	  	lea n1[i] 
+	  	escriba "digite la nota 2:"
+	  	lea n2[i]
+	  	escriba "digite la nota 3:"
+	  	lea n3[i]
+	  	escriba "digite la nota 4:"
+	  	lea n4[i]
+	  	def [i]<- (n1[i]+n2[i]+n3[i]+n4[i])/4
+	    escriba "desea continuar s/n?"
+	    lea sw
+	    llamar limpiar_pantalla()
+	    i<-i+1
+	  fin mientras
+	  
+	  	 ctd<-i-1
+	  
+	 	 mayor<-0
+	  para i<-1 hasta ctd haga
+	  	si def [i] > mayor entonces
+	  		mayor <- def [i]
+	  		posicion<-i
+	  	fin si
+	  fin para
+	  
+	  escriba "la nota mas alta es:",def[posicion]
+	  escriba ",,fue la de:",nombre [posicion]
+
+	  
+	  
+fin
+	 	 
+	 	 
+		  
+	  
+	  
+	  
+	  	

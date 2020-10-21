@@ -1,0 +1,45 @@
+// declaracion de arreglo
+
+arreglo [20] de cadena [100] nombres
+
+//declaracion de variables
+
+entero j,i
+cadena [100] aux
+caracter sw
+
+// programa principal
+
+inicio
+
+	para i<-1 hasta 20 haga
+		escriba "nombre: "
+		lea nombres[i]
+	fin para
+	
+//organizar el vector utilizando el metodo burbuja
+
+	para i<-2 hasta 20 haga
+		para j<-1 hasta 19 haga 
+			si (nombres[j]>nombres[j+1]) entonces
+				aux<- nombres[j]
+				nombres[j]<-nombres[j+1]
+				nombres[j+1]<-aux
+			fin si
+		fin para
+	fin para
+	
+//mostrar el vector ordenado
+
+	para i<-1 hasta 20 haga
+		escriba nombres[i]
+		llamar nueva_linea
+	fin para
+
+//lectura para fin del programa
+
+	escriba "enter"
+	lea sw
+
+fin
+ 

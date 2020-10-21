@@ -1,0 +1,52 @@
+///////////////////////////////////////
+//Archivo: Tres números menores
+//Autor: Elizabeth Elena Alarcón Pantoja//
+//Fecha:05/05/2015
+//Descripción: diferencia los números menores//
+/////////////////////////////////////////////////////////////////////////////////////////
+
+//Bloque de declaración
+
+real n1, n2, n3
+
+//bloque de procedimientos y funciones
+
+//programa principal
+
+Inicio
+	escriba "Digite un número 1:"
+	lea n1
+	llamar nueva_linea
+	escriba "Digite un número 2:"
+	lea n2
+	llamar nueva_linea
+	escriba "Digite un número 3:"
+	lea n3
+	llamar nueva_linea
+		si (n1<n2) y (n2<n3)entonces
+			escriba "el número ", n1 , " es menor que el número " , n2 , "; y el número " , n2 , " es menor que el número " , n3
+		sino
+			si (n1<n3) y (n3<n2)entonces
+				escriba "el número ", n1 , " es menor que el número " , n3 , "; y el número " , n3 , " es menor que el número " , n2
+			sino 
+				si (n2<n1) y (n1<n3)entonces
+					escriba "el número ", n2 , " es menor que el número " , n1 , "; y el número " , n1 , " es menor que el número " , n3
+				sino
+					si (n2<n3) y (n3<n1)entonces
+						escriba "el número ", n2 , " es menor que el número " , n3 , "; y el número " , n3 , " es menor que el número " , n1
+					sino 
+						si (n3<n1) y (n1<n2)entonces
+							escriba "el número ", n3 , " es menor que el número " , n1 , "; y el número " , n1 , " es menor que el número " , n2
+						sino
+							si (n3<n2) y (n2<n1)entonces
+								escriba "el número ", n3 , " es menor que el número " , n2 , "; y el número " , n2 , " es menor que el número " , n1
+							sino 
+								escriba "Todos los numeros son iguales"
+							fin si
+						fin si
+					fin si
+				fin si
+			fin si
+		fin si
+fin
+							

@@ -1,0 +1,128 @@
+//////////////////////////////////////////////////////////////////////////////////////
+//Programa:			empleados														//
+//Descripciòn:		Utilizacion de registros, vectores, funciones y procedimientos	//
+//Autor:																			//
+//Fecha:			28/05/2015														//
+//////////////////////////////////////////////////////////////////////////////////////
+
+//Declaracion de registro (Nuevo tipo de dato)
+
+registro empleados
+	Cadena [20] codigo
+	Cadena [100] nombre
+	Caracter genero
+	real salario
+fin registro
+
+//declaracion de variables
+
+arreglo [100] de empleados emp
+entero i
+
+// procedimiento para continuar, antes de salir
+
+procedimiento esperar
+	caracter sw
+inicio 
+	llamar nueva_linea()
+	llamar nueva_linea()
+	escriba "<< Presione enter para continuar >>"
+	lea sw
+fin
+
+//procedimientos para llenar el vector
+
+procedimiento Ingresarempleado
+	caracter sw
+inicio
+	repita
+		llamar limpiar_pantalla
+		escriba "****INGRESAR EMPLEADOS****"
+		llamar nueva_linea()
+		llamar nueva_linea()
+		escriba "Empleado Nº ", i
+		llamar nueva_linea()
+		escriba "Codigo     	>> "
+		lea emp[i].codigo
+		escriba "Nombre     	>> "
+		lea emp[i].nombre
+		escriba "Genero. F/M   	>> "
+		lea emp[i].genero
+		escriba "Salario		>> "
+		lea emp[i].salario
+		llamar nueva_linea()
+		llamar nueva_linea()
+		i<-i+1
+		escriba "¿Desea continuar S/N?"
+		lea sw
+	hasta (sw<>'s')
+	llamar esperar
+fin
+
+// procedimiento para mostrar valores que contiene el vector
+
+procedimiento mostrarempleados
+	caracter sw
+	entero p
+inicio
+	p<-1
+	repita
+		llamar limpiar_pantalla()
+		escriba "****NOMINA DE EMPLEADOS****"
+		LLAMAR nueva_linea()
+		llamar nueva_linea()
+		escriba "Empleado Nº ", p
+		llamar nueva_linea()
+		escriba "Codigo			>> ", emp[p].codigo
+		llamar nueva_linea()
+		escriba "Nombre			>> ", emp[p].nombre
+		llamar nueva_linea()
+		escriba "Genero			>> ", emp[p].genero
+		llamar nueva_linea()
+		escriba "Salario		>> ", emp[p].salario
+		LLAMAR nueva_linea()
+		llamar nueva_linea()
+		escriba "Pulse enter para ver otro empleado"
+		lea sw
+		p<-p+1
+	HASTA (p>=i)
+	llamar esperar
+fin
+
+//Procedimiento para mostrar el memu principar
+
+procedimiento menu
+	caracter sw
+inicio
+	repita 
+		llamar limpiar_pantalla()
+		escriba "**** MENU PRINCIPAL ****"
+		LLAMAR nueva_linea()
+		LLAMAR nueva_linea()
+		escriba "1. Ingresar Empleados"
+		LLAMAR nueva_linea()
+		escriba "2. Mostrar Nomina"
+		LLAMAR nueva_linea()
+		escriba "3. Salir"
+		LLAMAR nueva_linea()
+		LLAMAR nueva_linea()
+		escriba "Digite la opcion correspondiente >>"
+		lea sw
+		caso sw
+			'1': llamar Ingresarempleado
+			'2': llamar mostrarempleados
+		fin caso
+	hasta (sw='3')
+fin
+
+
+//Programa principal
+
+Inicio
+
+//Inicializacion de variables
+
+i<-1
+	llamar menu
+	llamar esperar
+fin

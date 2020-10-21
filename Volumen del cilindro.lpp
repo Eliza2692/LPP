@@ -1,0 +1,28 @@
+
+Caracter sw
+real Radio, Altura, Volumen
+
+Inicio
+
+sw <- 's'
+
+Mientras (sw='s') o (sw='S') haga
+
+	Escriba "Radio: "
+	lea Radio
+
+	Escriba "Altura: "
+	lea Altura
+
+	Volumen<- Radio^2*Altura*3.1416
+
+	escriba "El Volumen de cilindro es: ", Volumen
+
+	Llamar nueva_linea
+	
+	escriba "¿Desea calcular otro cilindro?: S/N "
+	lea sw
+	
+fin mientras
+
+fin

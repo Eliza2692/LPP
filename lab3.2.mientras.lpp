@@ -1,0 +1,59 @@
+//declaracion de un arreglo con 2 dimensiones 
+
+arreglo [4,3] de real n
+
+//declaracion de variables
+
+entero i,j
+real definitiva,sum
+caracter sw
+
+inicio
+
+//llenar la matriz a
+
+//ciclo que recorre las filas de la matriz
+
+	para i<-1 hasta 4 haga
+		llamar Limpiar_pantalla
+		escriba "digite nota del estudiante: ",i
+		llamar nueva_linea
+		
+//ciclo que recorre las columnas de la matriz
+
+		para j<-1 hasta 3 haga 
+			escriba "Nota ", j," : "
+			lea n[i,j]
+		fin para
+	fin para
+	
+//mostara los valores de la matriz
+
+	para i<-1 hasta 4 haga
+		llamar limpiar_pantalla()
+		escriba "estudiante ",i
+		sum<-0
+		para j<-1 hasta 3 haga
+			llamar nueva_linea()
+			escriba "Nota ", j, " : ", n[i,j]
+			sum<-sum+n[i,j] 
+		fin para
+		definitiva<-sum/3
+		
+		llamar nueva_linea()
+		escriba "_________________________________________________"
+		llamar nueva_linea()
+		escriba "Definitiva: ", definitiva
+		
+//lectura para continuar con el siguiente
+
+		llamar nueva_linea()
+		llamar nueva_linea()
+		escriba "enter"
+		lea sw
+	fin para
+	
+	escriba "enter"
+	lea sw
+	
+fin	

@@ -1,0 +1,33 @@
+///////////////////////////////////////
+//Archivo: ejemplo para
+//Autor: Elizabeth Elena Alarcón Pantoja//
+//Fecha:05/05/2015
+//Descripción: ejemplo para
+/////////////////////////////////////////////////////////////////////////////////////////
+
+//Bloque de declaración
+
+entero i,n, par, impar
+
+//bloque de procedimientos y funciones
+
+//programa principal (funciona hasta 33!)
+
+Inicio
+
+	par<-0
+	impar<-0
+	Para i<-1 hasta 20 haga
+		escriba "Digite un número: "
+		lea n
+			si n mod 2 = 0 entonces
+				par<-par+n
+			sino
+				impar<-impar+n
+			fin si
+	fin para
+	escriba "El total de la suma de los números pares es:", par
+	llamar nueva_linea
+	escriba "El total de la suma de los números impares es:", impar
+
+fin

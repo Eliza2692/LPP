@@ -1,0 +1,42 @@
+///////////////////////////////////////
+//Archivo: Valor hexadecimal
+//Autor: Elizabeth Elena Alarcón Pantoja//
+//Fecha:05/05/2015
+//Descripción: Da como resulatado el valor hexadecimal//
+////////////////////////////////////////////////////////
+
+//Bloque de declaración
+
+entero n
+
+//bloque de procedimientos y funciones
+
+//programa principal
+
+Inicio
+	escriba "Digite un número entero del 1 al 15:"
+	lea n
+	llamar nueva_linea
+	si (n<1) o (n>15) entonces
+		escriba "El número ", n, " no se encuentra entre los valores de 1 y 15"
+	sino
+		si (n>=1) y (n<=9) entonces
+			escriba n
+		sino
+			caso n
+			10:
+				escriba "A"
+			11:
+				escriba "B"
+			12:
+				escriba "C"
+			13:
+				escriba "D"
+			14:
+				escriba "E"
+			15:
+				escriba "F"
+			fin caso
+		fin si
+	fin si
+fin

@@ -1,0 +1,47 @@
+//declaracion de arreglo
+
+arreglo [20] de entero v
+
+//declaracion de variables
+
+entero i,j,aux
+
+caracter sw
+
+//programa principal
+
+inicio
+
+//llenar el vector
+
+	para i<-1 hasta 20 haga
+		escriba "Valor de la posicion ",i, " : "
+		lea v[i]
+	fin para
+	
+//organizar el vector utilizando el metodo burbuja
+
+
+	para i<-2 hasta 20 haga
+		para j<-1 hasta 19 haga
+			si (v[j]>v[j+1]) entonces
+				aux<- v[j]
+				v[j]<-v[j+1]
+				v[j+1]<-aux
+			fin si
+		fin para
+	fin para
+	
+// mostrar el vector ordenado
+
+	para i<-1 hasta 20 haga
+		escriba v[i]
+		llamar nueva_linea
+	fin para
+	
+//lectura para terminar el programa
+
+	escriba "pulse enter para continuar"
+	lea sw
+
+fin
